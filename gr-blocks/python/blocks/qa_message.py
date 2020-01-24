@@ -112,4 +112,4 @@ class test_message(gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(test_message, "test_message.xml")
+    gr_unittest.run(test_message)

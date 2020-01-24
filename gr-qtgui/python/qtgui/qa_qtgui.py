@@ -70,4 +70,4 @@ class test_qtgui(gr_unittest.TestCase):
         self.qtsnk = qtgui.histogram_sink_f(1024, 100, -1, 1, "Test", 1)
 
 if __name__ == '__main__':
-    gr_unittest.run(test_qtgui, "test_qtgui.xml")
+    gr_unittest.run(test_qtgui)
