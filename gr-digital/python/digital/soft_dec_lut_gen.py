@@ -73,7 +73,7 @@ def soft_dec_table_generator(soft_dec_gen, prec, Es=1):
 
     '''
 
-    npts = 2.0**prec
+    npts = 2**prec
     maxd = Es*numpy.sqrt(2.0)/2.0
     yrng = numpy.linspace(-maxd, maxd, npts)
     xrng = numpy.linspace(-maxd, maxd, npts)
