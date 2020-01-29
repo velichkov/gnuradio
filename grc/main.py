@@ -56,7 +56,7 @@ def main():
     log.addHandler(console)
 
     py_version = sys.version.split()[0]
-    log.debug("Starting GNU Radio Companion ({})".format(py_version))
+    log.debug("Starting GNU Radio Companion (python {})".format(py_version))
 
     # Delay importing until the logging is setup
     from .gui.Platform import Platform
