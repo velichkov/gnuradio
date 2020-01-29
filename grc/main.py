@@ -40,7 +40,7 @@ def main():
     # Enable logging
     # Note: All other modules need to use the 'grc.<module>' convention
     log = logging.getLogger('grc')
-    log.setLevel(logging.INFO)
+    log.setLevel(LOG_LEVELS[args.log])
 
     # Console formatting
     console = logging.StreamHandler()
