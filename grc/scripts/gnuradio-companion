@@ -80,13 +80,45 @@ def run_main():
         from gnuradio.grc.main import main
     else:
         print("Running from source tree")
-        sys.path.insert(1, script_path[:-len(source_tree_subpath)])
+        topdir=script_path[:-len(source_tree_subpath)]+"/"
+        paths=[topdir]
+        blocks=[topdir + "grc/blocks/"]
+
+        for dir in [
+                "gnuradio-runtime/",
+                "gr-blocks/",
+                "gr-filter/",
+                "gr-qtgui/",
+                "gr-wavelet/",
+                "gr-vocoder/",
+                "gr-uhd/",
+                "gr-video-sdl/",
+                "gr-dtv/",
+                "gr-channels/",
+                "gr-zeromq/",
+                "gr-analog/",
+                "gr-fec/",
+                "gr-trellis/",
+                "gr-fft/",
+                "gr-digital/",
+                "gr-audio/",
+                ]:
+            paths += [
+                    topdir+"build/"+dir+"python/",
+                    topdir+"build/"+dir+"swig/",
+                    ]
+            grcdir = topdir+dir+"grc/"
+            if os.path.exists(grcdir):
+                blocks += [grcdir]
+
+        sys.path = paths + sys.path
+        os.environ['GRC_BLOCKS_PATH']= ":".join(blocks)
         from grc.main import main
     exit(main())
 
 
 if __name__ == '__main__':
-    check_gnuradio_import()
-    check_gtk()
-    check_blocks_path()
+    #check_gnuradio_import()
+    #check_gtk()
+    #check_blocks_path()
     run_main()
