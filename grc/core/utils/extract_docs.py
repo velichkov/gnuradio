@@ -19,6 +19,8 @@ import itertools
 import six
 from six.moves import queue, filter, range
 
+import logging
+logger = logging.getLogger(__name__)
 
 ###############################################################################
 # The docstring extraction
@@ -205,9 +207,9 @@ class SubprocessLoader(object):
             key, docs = args
             self.callback_query_result(key, docs)
         elif cmd == 'error':
-            print(args)
+            logger.error(args)
         else:
-            print("Unknown response:", cmd, args, file=sys.stderr)
+            logger.error("Unknown response:", cmd, args)
 
     def query(self, key, imports=None, make=None):
         """ Request docstring extraction for a certain key """
