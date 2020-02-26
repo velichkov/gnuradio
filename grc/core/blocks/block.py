@@ -77,7 +77,7 @@ class Block(Element):
 
         self.states = {'state': True, 'bus_source': False, 'bus_sink': False, 'bus_structure': None}
 
-        if 'cpp' in self.flags and not (self.is_virtual_source() or self.is_virtual_sink()):
+        if self.enabled and 'cpp' in self.flags and not (self.is_virtual_source() or self.is_virtual_sink()):
             self.orig_cpp_templates = self.cpp_templates # The original template, in case we have to edit it when transpiling to C++         
 
         self.current_bus_structure = {'source': None, 'sink': None}
